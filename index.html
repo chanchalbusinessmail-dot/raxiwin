@@ -12,148 +12,235 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
+            color: #fff;
+            background: #0a0a0a url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,50,50,0.1)"/></svg>');
+            background-attachment: fixed;
+        }
+
+        /* Dark theme with red accents */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ff3333;
+            border-radius: 4px;
         }
 
         /* Navigation */
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(20,0,0,0.95) 100%);
             color: white;
             padding: 1rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(255,50,50,0.3);
+            border-bottom: 2px solid #ff3333;
         }
 
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: bold;
-            letter-spacing: 1px;
+            background: linear-gradient(135deg, #ffb000 0%, #ff3333 50%, #ff8800 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            text-shadow: 0 0 30px rgba(255, 50, 50, 0.5);
+            font-style: italic;
+        }
+
+        .logo::before {
+            content: "👑 ";
+            margin-right: 5px;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             align-items: center;
         }
 
         .nav-links a {
-            color: white;
+            color: #fff;
             text-decoration: none;
-            transition: opacity 0.3s;
+            transition: all 0.3s;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
         }
 
         .nav-links a:hover {
-            opacity: 0.8;
+            color: #ff3333;
+            text-shadow: 0 0 10px rgba(255, 50, 50, 0.8);
         }
 
         .btn {
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
         }
 
         .btn-login {
             background: transparent;
-            border: 2px solid white;
-            color: white;
+            border: 2px solid #ffb000;
+            color: #ffb000;
+            box-shadow: 0 0 15px rgba(255, 176, 0, 0.3);
         }
 
         .btn-login:hover {
-            background: white;
-            color: #667eea;
+            background: rgba(255, 176, 0, 0.1);
+            box-shadow: 0 0 25px rgba(255, 176, 0, 0.6);
+            transform: scale(1.05);
         }
 
         .btn-register {
-            background: #fff;
-            color: #667eea;
+            background: linear-gradient(135deg, #ff3333 0%, #ff8800 100%);
+            color: white;
+            box-shadow: 0 0 20px rgba(255, 50, 50, 0.4);
         }
 
         .btn-register:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: scale(1.08);
+            box-shadow: 0 0 30px rgba(255, 50, 50, 0.8);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, rgba(20,0,0,0.8) 0%, rgba(0,0,0,0.9) 50%, rgba(20,0,0,0.8) 100%), 
+                        radial-gradient(circle at 20% 50%, rgba(255,50,50,0.1) 0%, transparent 50%);
             color: white;
-            padding: 150px 2rem 100px;
+            padding: 180px 2rem 120px;
             text-align: center;
-            margin-top: 60px;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(255, 50, 50, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(255, 176, 0, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-logo {
+            font-size: 4.5rem;
+            font-weight: 900;
             margin-bottom: 1rem;
-            animation: slideDown 0.8s ease;
+            background: linear-gradient(135deg, #ffb000 0%, #ff3333 50%, #ff8800 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(255, 50, 50, 0.5);
+            letter-spacing: 3px;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .hero-logo::before {
+            content: "👑\A";
+            white-space: pre;
+            display: block;
+            font-size: 3rem;
+            margin-bottom: -10px;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 30px rgba(255, 50, 50, 0.4), 0 0 60px rgba(255, 176, 0, 0.2);
+            }
+            50% {
+                text-shadow: 0 0 50px rgba(255, 50, 50, 0.8), 0 0 80px rgba(255, 176, 0, 0.4);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            letter-spacing: 2px;
+            animation: slideUp 0.8s ease 0.2s both;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
             opacity: 0.95;
-            animation: slideUp 0.8s ease 0.2s both;
+            animation: slideUp 0.8s ease 0.4s both;
+            letter-spacing: 0.5px;
+            line-height: 1.8;
         }
 
         .cta-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
-            animation: slideUp 0.8s ease 0.4s both;
+            animation: slideUp 0.8s ease 0.6s both;
         }
 
         .btn-primary {
-            background: white;
-            color: #667eea;
-            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #ff3333 0%, #ff8800 100%);
+            color: white;
+            padding: 1.2rem 3rem;
             font-size: 1.1rem;
+            box-shadow: 0 0 30px rgba(255, 50, 50, 0.5);
         }
 
         .btn-primary:hover {
-            transform: scale(1.05);
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 0 50px rgba(255, 50, 50, 0.8);
         }
 
         .btn-secondary {
             background: transparent;
-            color: white;
-            border: 2px solid white;
-            padding: 1rem 2.5rem;
+            color: #ffb000;
+            border: 2px solid #ffb000;
+            padding: 1.2rem 3rem;
             font-size: 1.1rem;
+            box-shadow: 0 0 20px rgba(255, 176, 0, 0.3);
         }
 
         .btn-secondary:hover {
-            background: rgba(255,255,255,0.1);
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            background: rgba(255, 176, 0, 0.1);
+            box-shadow: 0 0 40px rgba(255, 176, 0, 0.6);
+            transform: scale(1.1) translateY(-3px);
         }
 
         @keyframes slideUp {
@@ -167,97 +254,203 @@
             }
         }
 
-        /* Features Section */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Features Section - Coming Soon style */
         .features {
-            background: white;
-            padding: 4rem 2rem;
+            background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(20,0,0,0.6) 100%);
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #ff3333, transparent);
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
+            font-size: 2.8rem;
+            margin-bottom: 4rem;
+            background: linear-gradient(135deg, #ffb000 0%, #ff3333 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+            animation: slideDown 0.8s ease;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
         }
 
         .feature-card {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(255, 50, 50, 0.05) 0%, rgba(255, 176, 0, 0.05) 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
             text-align: center;
-            transition: all 0.3s;
-            border-top: 4px solid #667eea;
+            transition: all 0.4s;
+            border: 2px solid rgba(255, 50, 50, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ffb000, #ff3333, #ff8800);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-top-color: #764ba2;
+            transform: translateY(-15px);
+            box-shadow: 0 15px 50px rgba(255, 50, 50, 0.3);
+            border-color: rgba(255, 176, 0, 0.4);
+            background: linear-gradient(135deg, rgba(255, 50, 50, 0.1) 0%, rgba(255, 176, 0, 0.1) 100%);
         }
 
         .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .feature-card h3 {
             margin-bottom: 1rem;
-            color: #667eea;
+            color: #ffb000;
+            font-size: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .feature-card p {
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         /* Games Section */
         .games {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 4rem 2rem;
+            background: linear-gradient(180deg, rgba(20,0,0,0.6) 0%, rgba(0,0,0,0.8) 100%);
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .games::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #ff8800, transparent);
         }
 
         .games .section-title {
-            color: white;
+            color: #ffb000;
         }
 
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
         }
 
         .game-card {
-            background: rgba(255,255,255,0.1);
-            padding: 1.5rem;
-            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(255, 50, 50, 0.1) 0%, rgba(255, 136, 0, 0.1) 100%);
+            padding: 2rem;
+            border-radius: 15px;
             text-align: center;
-            backdrop-filter: blur(10px);
             cursor: pointer;
-            transition: all 0.3s;
-            border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.4s;
+            border: 2px solid rgba(255, 176, 0, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(255, 176, 0, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s;
         }
 
         .game-card:hover {
-            background: rgba(255,255,255,0.2);
-            transform: scale(1.05);
-            border-color: rgba(255,255,255,0.5);
+            background: linear-gradient(135deg, rgba(255, 50, 50, 0.15) 0%, rgba(255, 136, 0, 0.15) 100%);
+            transform: scale(1.08);
+            border-color: rgba(255, 176, 0, 0.5);
+            box-shadow: 0 10px 40px rgba(255, 50, 50, 0.3);
         }
 
         .game-card h3 {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            color: #ffb000;
+            font-size: 1.3rem;
+            letter-spacing: 0.5px;
+        }
+
+        .game-card p {
+            color: #aaa;
+            font-size: 0.9rem;
         }
 
         /* Stats Section */
         .stats {
-            background: white;
-            padding: 4rem 2rem;
+            background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(20,0,0,0.6) 100%);
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #ff3333, transparent);
         }
 
         .stats-grid {
@@ -267,21 +460,51 @@
             text-align: center;
         }
 
+        .stat-item {
+            background: linear-gradient(135deg, rgba(255, 176, 0, 0.05) 0%, rgba(255, 50, 50, 0.05) 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 176, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .stat-item:hover {
+            border-color: rgba(255, 176, 0, 0.5);
+            box-shadow: 0 10px 30px rgba(255, 50, 50, 0.2);
+            transform: translateY(-5px);
+        }
+
         .stat-item h2 {
-            font-size: 3rem;
-            color: #667eea;
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #ffb000, #ff3333);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 0.5rem;
+            animation: slideUp 0.8s ease;
         }
 
         .stat-item p {
-            font-size: 1.1rem;
-            color: #666;
+            font-size: 1rem;
+            color: #aaa;
+            letter-spacing: 0.5px;
         }
 
         /* Testimonials */
         .testimonials {
-            background: #f8f9fa;
-            padding: 4rem 2rem;
+            background: linear-gradient(180deg, rgba(20,0,0,0.6) 0%, rgba(0,0,0,0.8) 100%);
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #ff8800, transparent);
         }
 
         .testimonials .section-title {
@@ -295,38 +518,61 @@
         }
 
         .testimonial-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, rgba(255, 50, 50, 0.08) 0%, rgba(255, 176, 0, 0.08) 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(255, 50, 50, 0.15);
+            border: 2px solid rgba(255, 176, 0, 0.15);
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            border-color: rgba(255, 176, 0, 0.4);
+            box-shadow: 0 12px 40px rgba(255, 50, 50, 0.25);
+            transform: translateY(-5px);
         }
 
         .testimonial-card .rating {
-            color: #ffc107;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
+            color: #ffb000;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
         }
 
         .testimonial-card p {
-            margin-bottom: 1rem;
-            color: #666;
+            margin-bottom: 1.5rem;
+            color: #ddd;
             font-style: italic;
+            line-height: 1.7;
         }
 
         .testimonial-author {
-            font-weight: bold;
-            color: #333;
+            font-weight: 700;
+            color: #ffb000;
+            letter-spacing: 0.5px;
         }
 
         /* Footer */
         footer {
-            background: #2c3e50;
-            color: white;
-            padding: 3rem 2rem 1rem;
+            background: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(20,0,0,0.98) 100%);
+            color: #ccc;
+            padding: 4rem 2rem 1rem;
+            border-top: 2px solid #ff3333;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #ffb000, transparent);
         }
 
         .footer-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -335,8 +581,9 @@
         }
 
         .footer-section h4 {
-            margin-bottom: 1rem;
-            color: #fff;
+            margin-bottom: 1.5rem;
+            color: #ffb000;
+            letter-spacing: 1px;
         }
 
         .footer-section ul {
@@ -344,39 +591,41 @@
         }
 
         .footer-section ul li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
         .footer-section a {
-            color: #bdc3c7;
+            color: #aaa;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s;
         }
 
         .footer-section a:hover {
-            color: #fff;
+            color: #ffb000;
+            text-shadow: 0 0 10px rgba(255, 176, 0, 0.5);
         }
 
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #bdc3c7;
+            border-top: 1px solid rgba(255, 176, 0, 0.2);
+            color: #888;
+            font-size: 0.9rem;
         }
 
-        /* Mobile Responsive */
+        /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
+            .hero-logo {
+                font-size: 3rem;
             }
 
             .hero {
                 padding: 120px 1rem 80px;
-                margin-top: 60px;
+                margin-top: 70px;
+            }
+
+            .hero p {
+                font-size: 1rem;
             }
 
             .nav-links {
@@ -390,7 +639,7 @@
             .nav-links .btn {
                 display: block;
                 padding: 0.6rem 1rem;
-                font-size: 0.9rem;
+                font-size: 0.8rem;
             }
 
             .cta-buttons {
@@ -405,6 +654,31 @@
             .section-title {
                 font-size: 2rem;
             }
+
+            .feature-icon {
+                font-size: 3rem;
+            }
+
+            .stat-item h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Scroll animation */
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -412,60 +686,64 @@
     <!-- Navigation -->
     <header>
         <nav class="navbar">
-            <div class="logo">🎮 RAXIWIN</div>
+            <div class="logo">RAXI WIN</div>
             <div class="nav-links">
                 <a href="#games">Games</a>
                 <a href="#features">Features</a>
+                <a href="#stats">Stats</a>
                 <button class="btn btn-login">Login</button>
-                <button class="btn btn-register">Register</button>
+                <button class="btn btn-register">Register Now</button>
             </div>
         </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Play Games, Win Big, Withdraw Instantly</h1>
-        <p>Join thousands of players enjoying the ultimate gaming experience with fast payouts and exclusive rewards</p>
-        <div class="cta-buttons">
-            <button class="btn btn-primary">Get Started Now</button>
-            <button class="btn btn-secondary">Learn More</button>
+        <div class="hero-content">
+            <div class="hero-logo">RAXI<br>WIN</div>
+            <p class="hero-subtitle">NEW PLATFORM - COMING SOON</p>
+            <p>Strong Platform. Secure Future. Limitless Possibilities.</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary">🚀 Get Started</button>
+                <button class="btn btn-secondary">Learn More</button>
+            </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="features">
+    <section class="features" id="features">
         <div class="container">
             <h2 class="section-title">Why Choose Raxiwin?</h2>
             <div class="features-grid">
                 <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>LONG TERM SUPPORT</h3>
+                    <p>Dedicated support team available 24/7 to assist you with any queries or concerns</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>STABLE & RELIABLE</h3>
+                    <p>Enterprise-grade infrastructure with 99.9% uptime guarantee and secure transactions</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>GROW TOGETHER</h3>
+                    <p>Join thousands of players and grow your winnings with our referral rewards program</p>
+                </div>
+                <div class="feature-card">
                     <div class="feature-icon">⚡</div>
-                    <h3>Instant Withdrawals</h3>
-                    <p>Get your winnings fast with instant withdrawal options via UPI, bank transfer, and digital wallets</p>
+                    <h3>INSTANT WITHDRAWALS</h3>
+                    <p>Get your winnings in minutes via UPI, bank transfer, and digital wallets</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🔒</div>
-                    <h3>Secure & Safe</h3>
-                    <p>Enterprise-grade SSL encryption and two-factor authentication to protect your account and funds</p>
+                    <h3>SECURE & ENCRYPTED</h3>
+                    <p>Military-grade SSL encryption and two-factor authentication for maximum security</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🎁</div>
-                    <h3>Exciting Rewards</h3>
-                    <p>Earn points on every game, collect rewards, redeem exclusive bonuses, and get special gift codes</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Mobile Optimized</h3>
-                    <p>Play anytime, anywhere with our fully responsive platform and dedicated mobile app</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">👥</div>
-                    <h3>Refer & Earn</h3>
-                    <p>Invite friends and earn commissions on every referral. More friends = More earnings</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💬</div>
-                    <h3>24/7 Support</h3>
-                    <p>Round-the-clock customer support to help you with any questions or concerns</p>
+                    <h3>EXCLUSIVE REWARDS</h3>
+                    <p>Earn points, collect bonuses, redeem rewards, and unlock special privileges</p>
                 </div>
             </div>
         </div>
@@ -478,7 +756,7 @@
             <div class="games-grid">
                 <div class="game-card">
                     <h3>🎨 Color Prediction</h3>
-                    <p>Predict the next color and win big</p>
+                    <p>Predict the next color and win instant rewards</p>
                 </div>
                 <div class="game-card">
                     <h3>✈️ Aviator</h3>
@@ -486,27 +764,28 @@
                 </div>
                 <div class="game-card">
                     <h3>🎮 Wingo</h3>
-                    <p>Fast-paced action-packed gameplay</p>
+                    <p>Fast-paced action-packed gaming experience</p>
                 </div>
                 <div class="game-card">
                     <h3>🎰 Slots</h3>
                     <p>Classic slots with modern twists and big payouts</p>
                 </div>
                 <div class="game-card">
-                    <h3>🃏 Casino Games</h3>
-                    <p>Poker, blackjack, roulette and more</p>
+                    <h3>🃏 Card Games</h3>
+                    <p>Poker, blackjack, and other classic card games</p>
                 </div>
                 <div class="game-card">
                     <h3>🏏 Cricket Betting</h3>
-                    <p>Bet on your favorite cricket matches</p>
+                    <p>Bet on exciting cricket matches and tournaments</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Stats Section -->
-    <section class="stats">
+    <section class="stats" id="stats">
         <div class="container">
+            <h2 class="section-title">Our Achievements</h2>
             <div class="stats-grid">
                 <div class="stat-item">
                     <h2>50K+</h2>
@@ -514,7 +793,7 @@
                 </div>
                 <div class="stat-item">
                     <h2>₹10Cr+</h2>
-                    <p>Paid Out</p>
+                    <p>Total Payouts</p>
                 </div>
                 <div class="stat-item">
                     <h2>100+</h2>
@@ -522,7 +801,7 @@
                 </div>
                 <div class="stat-item">
                     <h2>2 Min</h2>
-                    <p>Avg Withdrawal Time</p>
+                    <p>Avg Withdrawal</p>
                 </div>
             </div>
         </div>
@@ -531,22 +810,22 @@
     <!-- Testimonials Section -->
     <section class="testimonials">
         <div class="container">
-            <h2 class="section-title">What Our Players Say</h2>
+            <h2 class="section-title">Player Testimonials</h2>
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="rating">⭐⭐⭐⭐⭐</div>
-                    <p>"Raxiwin is the best platform I've used. The games are fun and the withdrawals are super fast!"</p>
-                    <div class="testimonial-author">- Raj Kumar</div>
+                    <p>"Raxiwin offers the best gaming experience with lightning-fast withdrawals. Highly recommended!"</p>
+                    <div class="testimonial-author">— Raj Kumar</div>
                 </div>
                 <div class="testimonial-card">
                     <div class="rating">⭐⭐⭐⭐⭐</div>
-                    <p>"I've won big and received my money within minutes. Highly recommended for everyone!"</p>
-                    <div class="testimonial-author">- Priya Singh</div>
+                    <p>"I won big and received my money within minutes. The security and support are top-notch!"</p>
+                    <div class="testimonial-author">— Priya Singh</div>
                 </div>
                 <div class="testimonial-card">
                     <div class="rating">⭐⭐⭐⭐⭐</div>
-                    <p>"The referral program is amazing. I'm earning great commissions by inviting my friends."</p>
-                    <div class="testimonial-author">- Amit Patel</div>
+                    <p>"The referral program is amazing. I'm earning great passive income by inviting friends!"</p>
+                    <div class="testimonial-author">— Amit Patel</div>
                 </div>
             </div>
         </div>
@@ -556,55 +835,55 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h4>About Raxiwin</h4>
-                <p>Your premier destination for online gaming entertainment with secure transactions and instant payouts.</p>
+                <h4>👑 ABOUT RAXIWIN</h4>
+                <p>Your premier gaming platform with secure transactions, instant payouts, and unlimited possibilities. Join thousands of winners today!</p>
             </div>
             <div class="footer-section">
-                <h4>Quick Links</h4>
+                <h4>QUICK LINKS</h4>
                 <ul>
                     <li><a href="#">How to Play</a></li>
                     <li><a href="#">Payment Methods</a></li>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Download App</a></li>
+                    <li><a href="#">Contact Support</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h4>Resources</h4>
+                <h4>LEGAL</h4>
                 <ul>
                     <li><a href="#">Terms & Conditions</a></li>
                     <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Security</a></li>
                     <li><a href="#">Responsible Gaming</a></li>
+                    <li><a href="#">Security</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h4>Follow Us</h4>
+                <h4>FOLLOW US</h4>
                 <ul>
                     <li><a href="#">Facebook</a></li>
                     <li><a href="#">Instagram</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">YouTube</a></li>
+                    <li><a href="#">Twitter/X</a></li>
+                    <li><a href="#">Telegram</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Raxiwin. All rights reserved. | Responsible Gaming | Secure Platform</p>
+            <p>&copy; 2024 RAXIWIN | Strong Platform. Secure Future. Limitless Possibilities. | All Rights Reserved</p>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
 
-        // Button click handlers (you can customize these)
+        // Button handlers
         document.querySelector('.btn-primary').addEventListener('click', function() {
             alert('Redirecting to registration...');
         });
@@ -615,6 +894,24 @@
 
         document.querySelector('.btn-login').addEventListener('click', function() {
             alert('Opening login page...');
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .game-card, .stat-item, .testimonial-card').forEach(el => {
+            observer.observe(el);
         });
     </script>
 </body>
