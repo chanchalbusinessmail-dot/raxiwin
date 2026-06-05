@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Raxiwin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, rgba(20,0,0,0.95) 0%, rgba(0,0,0,0.98) 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 50, 50, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 176, 0, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .login-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .left-section {
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #ffb000 0%, #ff3333 50%, #ff8800 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .logo::before {
+            content: "👑\A";
+            white-space: pre;
+            display: block;
+            font-size: 2.5rem;
+            margin-bottom: -10px;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 30px rgba(255, 50, 50, 0.4);
+            }
+            50% {
+                text-shadow: 0 0 50px rgba(255, 50, 50, 0.8);
+            }
+        }
+
+        .tagline {
+            color: #ffb000;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .benefits {
+            text-align: left;
+            margin-top: 2rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: #ddd;
+            font-size: 0.95rem;
+        }
+
+        .benefit-item::before {
+            content: '✓';
+            color: #ffb000;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .right-section {
+            background: linear-gradient(135deg, rgba(255, 50, 50, 0.05) 0%, rgba(255, 176, 0, 0.05) 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 176, 0, 0.2);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #ffb000;
+            letter-spacing: 1px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.7rem;
+            color: #ddd;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.9rem;
+            border: 2px solid rgba(255, 176, 0, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #ffb000;
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 15px rgba(255, 176, 0, 0.3);
+        }
+
+        .form-group input::placeholder {
+            color: #888;
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .remember-forgot label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .remember-forgot label input {
+            width: auto;
+            margin: 0;
+        }
+
+        .remember-forgot a {
+            color: #ffb000;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .remember-forgot a:hover {
+            text-shadow: 0 0 10px rgba(255, 176, 0, 0.5);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #ff3333 0%, #ff8800 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(255, 50, 50, 0.4);
+        }
+
+        .btn-login:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 40px rgba(255, 50, 50, 0.8);
+        }
+
+        .btn-login:active {
+            transform: scale(0.98);
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #aaa;
+        }
+
+        .signup-link a {
+            color: #ffb000;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .signup-link a:hover {
+            text-shadow: 0 0 10px rgba(255, 176, 0, 0.5);
+        }
+
+        /* Admin Channel Section */
+        .admin-channel {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 176, 0, 0.2);
+        }
+
+        .admin-label {
+            font-size: 0.8rem;
+            color: #ff3333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .channel-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .channel-inputs input {
+            padding: 0.7rem;
+            border: 1px solid rgba(255, 50, 50, 0.3);
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .channel-inputs input:focus {
+            outline: none;
+            border-color: #ff3333;
+            box-shadow: 0 0 10px rgba(255, 50, 50, 0.3);
+        }
+
+        .channel-inputs input::placeholder {
+            color: #666;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .login-wrapper {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .left-section {
+                display: none;
+            }
+
+            .right-section {
+                padding: 2rem;
+            }
+
+            .form-title {
+                font-size: 1.5rem;
+            }
+
+            .channel-inputs {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .back-home {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255, 176, 0, 0.1);
+            color: #ffb000;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            border: 1px solid rgba(255, 176, 0, 0.3);
+            transition: all 0.3s;
+            z-index: 100;
+        }
+
+        .back-home:hover {
+            background: rgba(255, 176, 0, 0.2);
+            box-shadow: 0 0 15px rgba(255, 176, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-home">← Back Home</a>
+
+    <div class="container">
+        <div class="login-wrapper">
+            <!-- Left Section -->
+            <div class="left-section">
+                <div class="logo">RAXI<br>WIN</div>
+                <p class="tagline">Welcome Back, Winner!</p>
+                
+                <div class="benefits">
+                    <div class="benefit-item">Fast & Secure Login</div>
+                    <div class="benefit-item">Instant Withdrawals</div>
+                    <div class="benefit-item">Exclusive Rewards</div>
+                    <div class="benefit-item">24/7 Support</div>
+                </div>
+            </div>
+
+            <!-- Right Section - Login Form -->
+            <div class="right-section">
+                <h2 class="form-title">Login</h2>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                    </div>
+
+                    <div class="remember-forgot">
+                        <label>
+                            <input type="checkbox"> Remember me
+                        </label>
+                        <a href="#">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="btn-login">Login Now</button>
+                </form>
+
+                <div class="signup-link">
+                    Don't have an account? <a href="register.html">Register Here</a>
+                </div>
+
+                <!-- Admin Channel Section -->
+                <div class="admin-channel">
+                    <div class="admin-label">⚙️ Admin Channel Links</div>
+                    <div class="channel-inputs">
+                        <input type="text" id="loginLink" placeholder="Login link URL" value="">
+                        <input type="text" id="registerLink" placeholder="Register link URL" value="">
+                    </div>
+                    <div style="margin-top: 1rem; font-size: 0.8rem; color: #888;">
+                        <button type="button" onclick="saveAdminLinks()" style="background: rgba(255,50,50,0.2); border: 1px solid #ff3333; color: #ff3333; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600;">Save Links</button>
+                        <button type="button" onclick="loadAdminLinks()" style="background: rgba(255,176,0,0.2); border: 1px solid #ffb000; color: #ffb000; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; margin-left: 0.5rem; font-weight: 600;">Load Saved</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load admin links on page load
+        window.addEventListener('load', function() {
+            loadAdminLinks();
+        });
+
+        // Save admin links to localStorage
+        function saveAdminLinks() {
+            const loginLink = document.getElementById('loginLink').value;
+            const registerLink = document.getElementById('registerLink').value;
+            
+            if (!loginLink || !registerLink) {
+                alert('Please fill in both links!');
+                return;
+            }
+
+            const adminData = {
+                loginLink: loginLink,
+                registerLink: registerLink,
+                timestamp: new Date().toISOString()
+            };
+
+            localStorage.setItem('raxiwinAdminLinks', JSON.stringify(adminData));
+            alert('✅ Links saved successfully!');
+            console.log('Saved Admin Links:', adminData);
+        }
+
+        // Load admin links from localStorage
+        function loadAdminLinks() {
+            const saved = localStorage.getItem('raxiwinAdminLinks');
+            if (saved) {
+                const adminData = JSON.parse(saved);
+                document.getElementById('loginLink').value = adminData.loginLink;
+                document.getElementById('registerLink').value = adminData.registerLink;
+                console.log('Loaded Admin Links:', adminData);
+            }
+        }
+
+        // Handle login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const loginLink = document.getElementById('loginLink').value;
+            
+            if (!loginLink) {
+                alert('Admin login link not configured. Please set it in the Admin Channel section.');
+                return;
+            }
+
+            // Redirect to the configured login link
+            window.location.href = loginLink;
+        });
+
+        // Export admin panel data
+        function exportAdminData() {
+            const saved = localStorage.getItem('raxiwinAdminLinks');
+            if (saved) {
+                const blob = new Blob([saved], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'raxiwin-admin-config.json';
+                a.click();
+            }
+        }
+
+        // Import admin panel data
+        function importAdminData(file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    localStorage.setItem('raxiwinAdminLinks', JSON.stringify(data));
+                    loadAdminLinks();
+                    alert('✅ Configuration imported successfully!');
+                } catch (error) {
+                    alert('Error importing configuration: ' + error.message);
+                }
+            };
+            reader.readAsText(file);
+        }
+    </script>
+</body>
+</html>
