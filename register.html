@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Raxiwin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, rgba(20,0,0,0.95) 0%, rgba(0,0,0,0.98) 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 50, 50, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 176, 0, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-wrapper {
+            background: linear-gradient(135deg, rgba(255, 50, 50, 0.05) 0%, rgba(255, 176, 0, 0.05) 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 176, 0, 0.2);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffb000 0%, #ff3333 50%, #ff8800 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            text-align: center;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .logo::before {
+            content: "👑\A";
+            white-space: pre;
+            display: block;
+            font-size: 2rem;
+            margin-bottom: -5px;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 30px rgba(255, 50, 50, 0.4);
+            }
+            50% {
+                text-shadow: 0 0 50px rgba(255, 50, 50, 0.8);
+            }
+        }
+
+        .form-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #ffb000;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .form-subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            color: #ddd;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid rgba(255, 176, 0, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #ffb000;
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 15px rgba(255, 176, 0, 0.3);
+        }
+
+        .form-group input::placeholder {
+            color: #888;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .terms-condition {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        .terms-condition input {
+            width: auto;
+            margin-top: 0.3rem;
+            flex-shrink: 0;
+        }
+
+        .terms-condition a {
+            color: #ffb000;
+            text-decoration: none;
+        }
+
+        .terms-condition a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-register {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #ff3333 0%, #ff8800 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(255, 50, 50, 0.4);
+        }
+
+        .btn-register:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 40px rgba(255, 50, 50, 0.8);
+        }
+
+        .btn-register:active {
+            transform: scale(0.98);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .login-link a {
+            color: #ffb000;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .login-link a:hover {
+            text-shadow: 0 0 10px rgba(255, 176, 0, 0.5);
+        }
+
+        /* Admin Channel Section */
+        .admin-channel {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 176, 0, 0.2);
+        }
+
+        .admin-label {
+            font-size: 0.75rem;
+            color: #ff3333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.7rem;
+            font-weight: 700;
+        }
+
+        .channel-inputs {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+        }
+
+        .channel-inputs input {
+            padding: 0.6rem;
+            border: 1px solid rgba(255, 50, 50, 0.3);
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+
+        .channel-inputs input:focus {
+            outline: none;
+            border-color: #ff3333;
+            box-shadow: 0 0 10px rgba(255, 50, 50, 0.3);
+        }
+
+        .admin-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.7rem;
+            margin-top: 0.8rem;
+        }
+
+        .admin-buttons button {
+            padding: 0.5rem 0.8rem;
+            border: 1px solid;
+            background: transparent;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.75rem;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-save {
+            background: rgba(255, 50, 50, 0.2);
+            border-color: #ff3333;
+            color: #ff3333;
+        }
+
+        .btn-save:hover {
+            background: rgba(255, 50, 50, 0.3);
+        }
+
+        .btn-load {
+            background: rgba(255, 176, 0, 0.2);
+            border-color: #ffb000;
+            color: #ffb000;
+        }
+
+        .btn-load:hover {
+            background: rgba(255, 176, 0, 0.3);
+        }
+
+        /* Password Strength */
+        .password-strength {
+            margin-top: 0.3rem;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .strength-bar {
+            height: 100%;
+            width: 0;
+            background: #ff3333;
+            transition: all 0.3s;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .form-wrapper {
+                padding: 2rem 1.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .back-home {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255, 176, 0, 0.1);
+            color: #ffb000;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            border: 1px solid rgba(255, 176, 0, 0.3);
+            transition: all 0.3s;
+            z-index: 100;
+            font-size: 0.9rem;
+        }
+
+        .back-home:hover {
+            background: rgba(255, 176, 0, 0.2);
+            box-shadow: 0 0 15px rgba(255, 176, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-home">← Back Home</a>
+
+    <div class="container">
+        <div class="form-wrapper">
+            <div class="logo">RAXI<br>WIN</div>
+            <h2 class="form-title">Create Account</h2>
+            <p class="form-subtitle">Join thousands of winners today!</p>
+            
+            <form id="registerForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstname">First Name</label>
+                        <input type="text" id="firstname" placeholder="John" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Last Name</label>
+                        <input type="text" id="lastname" placeholder="Doe" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="john@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="+91 XXXXXXXXXX" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter strong password" required>
+                    <div class="password-strength">
+                        <div class="strength-bar" id="strengthBar"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm">Confirm Password</label>
+                    <input type="password" id="confirm" placeholder="Confirm password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <select id="country" required>
+                        <option value="">Select Country</option>
+                        <option value="IN">India</option>
+                        <option value="US">United States</option>
+                        <option value="UK">United Kingdom</option>
+                        <option value="AU">Australia</option>
+                        <option value="CA">Canada</option>
+                    </select>
+                </div>
+
+                <div class="terms-condition">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms" style="margin: 0;">I agree to the Terms & Conditions and Privacy Policy</label>
+                </div>
+
+                <button type="submit" class="btn-register">Create Account</button>
+            </form>
+
+            <div class="login-link">
+                Already have an account? <a href="login.html">Login Here</a>
+            </div>
+
+            <!-- Admin Channel Section -->
+            <div class="admin-channel">
+                <div class="admin-label">⚙️ Admin Channel Setup</div>
+                <div class="channel-inputs">
+                    <input type="text" id="registerLink" placeholder="Your main registration/dashboard link" value="">
+                </div>
+                <div class="admin-buttons">
+                    <button type="button" class="btn-save" onclick="saveRegisterLink()">💾 Save Link</button>
+                    <button type="button" class="btn-load" onclick="loadRegisterLink()">📂 Load Link</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load register link on page load
+        window.addEventListener('load', function() {
+            loadRegisterLink();
+        });
+
+        // Save register link to localStorage
+        function saveRegisterLink() {
+            const registerLink = document.getElementById('registerLink').value;
+            
+            if (!registerLink) {
+                alert('Please enter your registration/dashboard link!');
+                return;
+            }
+
+            const adminData = {
+                registerLink: registerLink,
+                timestamp: new Date().toISOString()
+            };
+
+            localStorage.setItem('raxiwinRegisterLink', JSON.stringify(adminData));
+            alert('✅ Registration link saved successfully!');
+            console.log('Saved Register Link:', adminData);
+        }
+
+        // Load register link from localStorage
+        function loadRegisterLink() {
+            const saved = localStorage.getItem('raxiwinRegisterLink');
+            if (saved) {
+                const adminData = JSON.parse(saved);
+                document.getElementById('registerLink').value = adminData.registerLink;
+                console.log('Loaded Register Link:', adminData);
+            }
+        }
+
+        // Password strength indicator
+        document.getElementById('password').addEventListener('input', function() {
+            const password = this.value;
+            const strengthBar = document.getElementById('strengthBar');
+            let strength = 0;
+
+            if (password.length >= 8) strength += 25;
+            if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength += 25;
+            if (/[0-9]/.test(password)) strength += 25;
+            if (/[^a-zA-Z0-9]/.test(password)) strength += 25;
+
+            strengthBar.style.width = strength + '%';
+            
+            if (strength < 50) {
+                strengthBar.style.background = '#ff3333';
+            } else if (strength < 75) {
+                strengthBar.style.background = '#ffb000';
+            } else {
+                strengthBar.style.background = '#00ff00';
+            }
+        });
+
+        // Handle registration form submission
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const password = document.getElementById('password').value;
+            const confirm = document.getElementById('confirm').value;
+
+            if (password !== confirm) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            const registerLink = document.getElementById('registerLink').value;
+            
+            if (!registerLink) {
+                alert('Admin registration link not configured. Please set it in the Admin Channel section.');
+                return;
+            }
+
+            // Collect form data
+            const formData = {
+                firstname: document.getElementById('firstname').value,
+                lastname: document.getElementById('lastname').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                country: document.getElementById('country').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // Save to localStorage as backup
+            localStorage.setItem('raxiwinUserData', JSON.stringify(formData));
+            
+            // Redirect to the configured registration link
+            window.location.href = registerLink + '?email=' + encodeURIComponent(formData.email);
+        });
+    </script>
+</body>
+</html>
